@@ -26,6 +26,77 @@ namespace Probleme_propuse___laborator
             //P14();
             //P15();
             //P16();
+            //P17();
+            //P18();
+        }
+
+        private static void P18()
+        {
+            //Să se scrie un program care să citească două numere reale a şi b. Apoi să pună utilizatorului o întrebare:
+            //Ce doriţi să calculăm ? Media aritmetică(1) sau geometrică(2)?. Dacă se va răspunde prin 1, se va calcula şi afişa media aritmetică,
+            //iar pentru 2 media geometrică(numai dacă numerele sunt pozitive !, iar de nu, se va afişa ‘eroare !’).
+            //Dacă nu se răspunde prin 1 sau 2 se va produce un sunet în difuzor.
+            int operatie;
+            Console.WriteLine("Ce doriţi să calculăm? Media aritmetică(1) sau media geometrică(2)?");
+            operatie = int.Parse(Console.ReadLine());
+            if (operatie != 1 && operatie != 2)
+            {
+                Console.WriteLine("eroare!");
+                return;
+            }
+            switch (operatie)
+            {
+                case 1:
+                    {
+                        double a, b;
+                        double result;
+                        Console.WriteLine("Introduceti 2 valori pentru care doriti sa aflati media aritmetica.");
+                        Console.Write("a=");
+                        a = int.Parse(Console.ReadLine());
+                        Console.Write("b=");
+                        b = int.Parse(Console.ReadLine());
+                        result = (a + b) / 2;
+                        Console.WriteLine($"Media aritmetica a celor 2 numere este: {result}");
+                    }
+                    break;
+                case 2:
+                    {
+                        double a, b;
+                        double result;
+                        Console.WriteLine("Introduceti 2 valori pentru care doriti sa aflati media geometrica.");
+                        Console.Write("a=");
+                        a = int.Parse(Console.ReadLine());
+                        Console.Write("b=");
+                        b = int.Parse(Console.ReadLine());
+                        if (a < 0 || b < 0)
+                        {
+                            Console.WriteLine("eroare!");
+                            return;
+                        }
+                        result = Math.Sqrt(a * b);
+                        Console.WriteLine($"Media geometrica a celor 2 numere este: {result}");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static void P17()
+        {
+            //Un punct material se află la distanţa x0 de origine, la momentul iniţial t0, când începe să se mişte rectiliniu uniform.
+            //Stiind că la momentul t se află la distanţa x faţă de origine, să se determine viteza v de mişcare a punctului material, la momentul t.
+            int x, x0, t, t0, v;
+            Console.Write("x0=");
+            x0 = int.Parse(Console.ReadLine());
+            Console.Write("t0=");
+            t0 = int.Parse(Console.ReadLine());
+            Console.Write("x=");
+            x = int.Parse(Console.ReadLine());
+            Console.Write("t=");
+            t = int.Parse(Console.ReadLine());
+            v = (x - x0) / (t - t0);
+            Console.WriteLine($"Viteza de miscare a punctului material la momentul t={t} este de {v} m/s.");
         }
 
         private static void P16()
@@ -326,26 +397,102 @@ namespace Probleme_propuse___laborator
             //selectarea funcției calculatorului.). După selectarea opțiunii dorite, programul trebuie să
             //ceară utilizatorului introducerea datelor necesare, respectiv, în cazul adunării, scăderii,
             //înmulțirii și împărțirii, două numere, iar în cazul radicalului și modulului, un singur număr.
+            int operatie;
+            Console.WriteLine("Ce operatie doriti sa efectuati?");
+            Console.WriteLine("1 = adunare, 2 = scadere, 3 = inmultire, 4 = impartire, 5 = radical, 6 = modul");
+            operatie = int.Parse(Console.ReadLine());
+
+            switch(operatie)
+            {
+                case 1:
+                    {
+                        int a, b, result;
+                        Console.WriteLine("Introduceti 2 valori pe care doriti sa le adunati.");
+                        a = int.Parse(Console.ReadLine());
+                        b = int.Parse(Console.ReadLine());
+                        result = a + b;
+                        Console.WriteLine($"{a} + {b} = {result}");
+                    }
+                    break;
+                case 2:
+                    {
+                        int a, b, result;
+                        Console.WriteLine("Introduceti 2 valori pe care doriti sa le scadeti.");
+                        a = int.Parse(Console.ReadLine());
+                        b = int.Parse(Console.ReadLine());
+                        result = a - b;
+                        Console.WriteLine($"{a} - {b} = {result}");
+                    }
+                    break;
+                case 3:
+                    {
+                        int a, b, result;
+                        Console.WriteLine("Introduceti 2 valori pe care doriti sa le inmultiti.");
+                        a = int.Parse(Console.ReadLine());
+                        b = int.Parse(Console.ReadLine());
+                        result = a * b;
+                        Console.WriteLine($"{a} * {b} = {result}");
+                    }
+                    break;
+                case 4:
+                    {
+                        int a, b, result;
+                        Console.WriteLine("Introduceti 2 valori pe care doriti sa le impartiti.");
+                        a = int.Parse(Console.ReadLine());
+                        b = int.Parse(Console.ReadLine());
+                        result = a / b;
+                        Console.WriteLine($"{a} / {b} = {result}");
+                    }
+                    break;
+                case 5:
+                    {
+                        int a;
+                        double result;
+                        Console.WriteLine("Introduceti o valoare pentru care doriti radicalul sau.");
+                        a = int.Parse(Console.ReadLine());
+                        result = Math.Sqrt(a);
+                        Console.WriteLine($"sqrt({a}) = {result}");
+                    }
+                    break;
+                case 6:
+                    {
+                        int a, result;
+                        Console.WriteLine("Introduceti o valoare pentru care doriti modulul sau.");
+                        a = int.Parse(Console.ReadLine());
+                        result = Math.Abs(a);
+                        Console.WriteLine($"|{a}| = {result}");
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
 
         private static void P1()
         {
             //Sa se scrie un program care converteste temperatura din grade celsius in grade fahrenheit si invers
             //utilizand instructiunea switch.
-            Console.WriteLine("Dati temperatura in grade Celsius daca doriti sa convertirti in Fahrenheit sau valoarea 0 daca doriti sa convertiti din Fahrenheit in Celsius.");
-            double n, result;
-            n = double.Parse(Console.ReadLine());
-            if (n != 0)
+            float c, f;
+            int optiune;
+            Console.WriteLine("1 = Celsius -> Fahrenheit, 2 = Fahrenheit -> Celsius");
+            optiune = int.Parse(Console.ReadLine());
+
+            switch(optiune)
             {
-                result = 1.8 * n + 32;
-                Console.WriteLine($"{n} grade Celsius sunt {result} gradea Fahrenheit.");
-            }
-            else
-            {
-                Console.WriteLine("Dati temperatura in grade Fahrenheit.");
-                n = double.Parse(Console.ReadLine());
-                result = ((n - 32) * 5) / 9;
-                Console.WriteLine($"{n} grade Fahrenheit sunt {result} gradea Celsius.");
+                case 1:
+                    Console.WriteLine("Dati o temperatura in grade Celsius: ");
+                    c = float.Parse(Console.ReadLine());
+                    f = c * (float)1.8 + 32;
+                    Console.WriteLine($"Temperatura corespunzatoare in grade Fahrenheit este: {f}");
+                    break;
+                case 2:
+                    Console.WriteLine("Dati o temperatura in grade Fahrenheit: ");
+                    f = float.Parse(Console.ReadLine());
+                    c = (f - 32) / (float)1.8;
+                    Console.WriteLine($"Temperatura corespunzatoare in grade Celsius este: {c}");
+                    break;
+                default:
+                    break;
             }
         }
     }
