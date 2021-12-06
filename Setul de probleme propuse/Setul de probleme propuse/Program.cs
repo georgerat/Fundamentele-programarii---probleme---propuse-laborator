@@ -28,6 +28,74 @@ namespace Probleme_propuse___laborator
             //P16();
             //P17();
             //P18();
+            //P19();
+            //P20();
+        }
+
+        private static void P20()
+        {
+            //Se citeşte un şir de numere întregi pâna la întâlnirea numărului 0.Să se calculeze media aritmetică a numerelor din şir.
+            double s=0, k=0;
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            for (int i = 0; i < t.Length; i++)
+            {
+                numar = int.Parse(t[i]);
+                if (numar == 0)
+                    break;
+                s = s + numar;
+                k++;
+            }
+            if (k < 2)
+                Console.WriteLine("Nu sunt destule numere pentru a calcula media aritmetica.");
+            else
+                Console.WriteLine($"Media aritmetica a celor {k} numere este {s/k}.");
+        }
+
+        private static void P19()
+        {
+            //Să se scrie un program care să citească trei numere reale a, b şi c, apoi să pună o întrebare de genul:
+            //Ce doriţi să calculăm? Aria sau perimetrul?.Dacă se va răspunde prin ‘aria’ atunci se va calcula şi afişa aria, altfel perimetrul.
+            double a, b, c;
+            Console.Write("a=");
+            a = double.Parse(Console.ReadLine());
+            Console.Write("b=");
+            b = double.Parse(Console.ReadLine());
+            Console.Write("c=");
+            c = double.Parse(Console.ReadLine());
+            Console.WriteLine("Ce doriţi să calculăm? Aria(1) sau perimetrul(2)?");
+            int operatie;
+            operatie = int.Parse(Console.ReadLine());
+            if (operatie != 1 && operatie != 2)
+            {
+                Console.WriteLine("eroare!");
+                return;
+            }
+            switch (operatie)
+            {
+                case 1:
+                    {
+                        double result, p;
+                        p = (a + b + c) / 2;
+                        result = Math.Sqrt((p * (p - a) * (p - b) * (p - c)));
+                        Console.WriteLine($"Aria este egala cu {result}.");
+                    }
+                    break;
+                case 2:
+                    {
+                        double result;
+                        result = a + b + c;
+                        Console.WriteLine($"Perimetrul este egal cu {result}.");
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
 
         private static void P18()
