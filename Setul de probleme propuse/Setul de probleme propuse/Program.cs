@@ -35,6 +35,254 @@ namespace Probleme_propuse___laborator
             //P23();
             //P24();
             //P25();
+            //P26();
+            //P27();
+            //P28();
+            //P29();
+            //P30();
+            //P31();
+            //P32();
+            //P33();
+        }
+
+        private static void P33()
+        {
+            //Să se afişeze toate numerele prime de 3 cifre care citite invers sunt tot numere prime.
+            int og, ci;
+            bool ok, ok2;
+
+            for (int i = 100; i <= 999; i++)
+            {
+                ok = true;
+                if (i % 2 == 0 && i != 2)
+                    ok = false;
+                for (int d = 3; d * d <= i; d = d + 2)
+                    if (i % d == 0)
+                        ok = false;
+                if (ok)
+                {
+                    ci = i;
+                    og = 0;
+                    while (ci != 0)
+                    {
+                        og = og * 10 + ci % 10;
+                        ci = ci / 10;
+                    }
+                    ok2 = true;
+                    if (og % 2 == 0 && og != 2)
+                        ok2 = false;
+                    for (int d = 3; d * d <= og; d = d + 2)
+                        if (og % d == 0)
+                            ok2 = false;
+                    if (ok2)
+                        Console.Write($"{i} ");
+                }
+            }
+            Console.WriteLine();
+        }
+
+        private static void P32()
+        {
+            //Să se afişeze primele n numere prime care au suma cifrelor mai mică sau egală cu m.
+            int n, m, k = 0, sc = 0, ci;
+            bool ok;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("m=");
+            m = int.Parse(Console.ReadLine());
+
+            for (int i = 2; ; i++)
+            {
+                if (k < n)
+                {
+                    ok = true;
+                    if (i % 2 == 0 && i != 2)
+                        ok = false;
+                    for (int d = 3; d * d <= i; d = d + 2)
+                        if (i % d == 0)
+                            ok = false;
+                    if (ok)
+                    {
+                        sc = 0;
+                        ci = i;
+                        while (ci != 0)
+                        {
+                            sc = sc + ci % 10;
+                            ci = ci / 10;
+                        }
+                        if (sc <= m)
+                        {
+                            k++;
+                            Console.Write($"{i} ");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    return;
+                }
+            }
+        }
+
+        private static void P31()
+        {
+            //Să se genereze toate numerele prime mai mici decât numărul natural n dat.
+            int m;
+            bool ok;
+            Console.Write("m=");
+            m = int.Parse(Console.ReadLine());
+            if (m < 2)
+            {
+                Console.WriteLine($"Nu exista numere prime mai mici decat {m}.");
+                return;
+            }
+            Console.Write($"Numerele prime mai mici decat {m} sunt: ");
+            for (int i = 2; i < m; i++)
+            {
+                ok = true;
+                if (i % 2 == 0 && i != 2)
+                    ok = false;
+                for (int d = 3; d * d <= i; d = d + 2)
+                    if (i % d == 0)
+                        ok = false;
+                if (ok)
+                    Console.Write($"{i} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P30()
+        {
+            //Să se transforme un număr din baza 10 în baza p < 10.Să se transforme un număr din baza p < 10 în baza 10.
+        }
+
+        private static void P29()
+        {
+            //Să se listeze toate numerele ≤n, a căror sumă a cifrelor este divizibilă prin 5.
+            int n, ci, sumcif;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            for(int i=1; i <= n ; i++)
+            {
+                ci = i;
+                sumcif = 0;
+                while(ci!=0)
+                {
+                    sumcif = sumcif + ci % 10;
+                    ci = ci / 10;
+                }
+                if (sumcif % 5 == 0)
+                    Console.Write($"{i} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P28()
+        {
+            //Să se afişeze toate numerele prime de 3 cifre care, citite invers, sunt tot numere prime.
+            int og, ci;
+            bool ok, ok2;
+
+            for (int i = 100; i <= 999 ; i++)
+            {
+                ok = true;
+                if (i % 2 == 0 && i != 2)
+                    ok = false;
+                for (int d = 3; d * d <= i; d = d + 2)
+                    if (i % d == 0)
+                        ok = false;
+                if (ok)
+                {
+                    ci = i;
+                    og = 0;
+                    while(ci!=0)
+                    {
+                        og = og * 10 + ci % 10;
+                        ci = ci / 10;
+                    }
+                    ok2 = true;
+                    if (og % 2 == 0 && og != 2)
+                        ok2 = false;
+                    for (int d = 3; d * d <= og; d = d + 2)
+                        if (og % d == 0)
+                            ok2 = false;
+                    if (ok2)
+                        Console.Write($"{i} ");
+                }         
+            }
+            Console.WriteLine();
+        }
+
+        private static void P27()
+        {
+            //Să se afişeze primele n numere prime care au suma cifrelor ≤m.
+            int n, m, k = 0, sc = 0, ci;
+            bool ok;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("m=");
+            m = int.Parse(Console.ReadLine());
+
+            for (int i = 2; ; i++)
+            {
+                if (k < n)
+                {
+                    ok = true;
+                    if (i % 2 == 0 && i != 2)
+                        ok = false;
+                    for (int d = 3; d * d <= i; d = d + 2)
+                        if (i % d == 0)
+                            ok = false;
+                    if (ok)
+                    {
+                        sc = 0;
+                        ci = i;
+                        while (ci != 0)
+                        {
+                            sc = sc + ci % 10;
+                            ci = ci / 10;
+                        }
+                        if (sc <= m)
+                        {
+                            k++;
+                            Console.Write($"{i} ");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine();
+                    return;
+                }
+            }
+        }
+
+        private static void P26()
+        {
+            //Să se afişeze toate numerele prime mai mici sau egale cu un numar m dat.
+            int m;
+            bool ok;
+            Console.Write("m=");
+            m = int.Parse(Console.ReadLine());
+            if(m<2)
+            {
+                Console.WriteLine($"Nu exista numere prime mai mici sau egale cu {m}.");
+                return;
+            }
+            Console.Write($"Numerele prime mai mici sau egale cu {m} sunt: ");
+            for (int i = 2; i <= m; i++)
+            {
+                ok = true;
+                if (i % 2 == 0 && i != 2)
+                    ok = false;
+                for (int d = 3; d * d <= i; d = d + 2)
+                    if (i % d == 0)
+                        ok = false;
+                if (ok)
+                    Console.Write($"{i} ");
+            }
+            Console.WriteLine();
         }
 
         private static void P25()
@@ -44,7 +292,7 @@ namespace Probleme_propuse___laborator
             Console.Write("n=");
             n = int.Parse(Console.ReadLine());
             cn = n;
-            while(cn!=0)
+            while (cn != 0)
             {
                 og = og * 10 + cn % 10;
                 cn = cn / 10;
@@ -61,7 +309,7 @@ namespace Probleme_propuse___laborator
             int n, k = 0;
             Console.Write("n=");
             n = int.Parse(Console.ReadLine());
-            while(n!=0)
+            while (n != 0)
             {
                 k++;
                 n = n / 10;
@@ -78,7 +326,7 @@ namespace Probleme_propuse___laborator
             Console.Write("b=");
             b = int.Parse(Console.ReadLine());
             ca = a;
-            while(ca-b>=0)
+            while (ca - b >= 0)
             {
                 ca = ca - b;
                 c++;
@@ -130,7 +378,7 @@ namespace Probleme_propuse___laborator
         private static void P20()
         {
             //Se citeşte un şir de numere întregi pâna la întâlnirea numărului 0.Să se calculeze media aritmetică a numerelor din şir.
-            double s=0, k=0;
+            double s = 0, k = 0;
 
             string line = Console.ReadLine();
             char[] sep = { ' ', '\n', '\t', '\r' };
@@ -149,7 +397,7 @@ namespace Probleme_propuse___laborator
             if (k < 2)
                 Console.WriteLine("Nu sunt destule numere pentru a calcula media aritmetica.");
             else
-                Console.WriteLine($"Media aritmetica a celor {k} numere este {s/k}.");
+                Console.WriteLine($"Media aritmetica a celor {k} numere este {s / k}.");
         }
 
         private static void P19()
@@ -565,7 +813,7 @@ namespace Probleme_propuse___laborator
             Console.WriteLine("1 = adunare, 2 = scadere, 3 = inmultire, 4 = impartire, 5 = radical, 6 = modul");
             operatie = int.Parse(Console.ReadLine());
 
-            switch(operatie)
+            switch (operatie)
             {
                 case 1:
                     {
@@ -640,7 +888,7 @@ namespace Probleme_propuse___laborator
             Console.WriteLine("1 = Celsius -> Fahrenheit, 2 = Fahrenheit -> Celsius");
             optiune = int.Parse(Console.ReadLine());
 
-            switch(optiune)
+            switch (optiune)
             {
                 case 1:
                     Console.WriteLine("Dati o temperatura in grade Celsius: ");
