@@ -30,6 +30,101 @@ namespace Probleme_propuse___laborator
             //P18();
             //P19();
             //P20();
+            //P21();
+            //P22();
+            //P23();
+            //P24();
+            //P25();
+        }
+
+        private static void P25()
+        {
+            //Un număr se numeşte “palindrom” dacă citit invers este acelaşi număr. Să se verifice dacă un număr este sau nu palindrom.
+            int n, cn, og = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            cn = n;
+            while(cn!=0)
+            {
+                og = og * 10 + cn % 10;
+                cn = cn / 10;
+            }
+            if (og == n)
+                Console.WriteLine($"{n} este palindrom.");
+            else
+                Console.WriteLine($"{n} nu este palindrom.");
+        }
+
+        private static void P24()
+        {
+            //Se citeşte un număr natural.Câte cifre conţine?
+            int n, k = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            while(n!=0)
+            {
+                k++;
+                n = n / 10;
+            }
+            Console.WriteLine($"Numarul dat contine {k} cifre.");
+        }
+
+        private static void P23()
+        {
+            //Efectuaţi împărţirea întreagă a două numere, făra a utiliza operatorii / şi %, ci doar scăderi repetate.
+            int a, b, c = 0, r = 0, ca;
+            Console.Write("a=");
+            a = int.Parse(Console.ReadLine());
+            Console.Write("b=");
+            b = int.Parse(Console.ReadLine());
+            ca = a;
+            while(ca-b>=0)
+            {
+                ca = ca - b;
+                c++;
+            }
+            Console.WriteLine($"{a} / {b} = {c} r {ca}");
+        }
+
+        private static void P22()
+        {
+            //Să se calculeze produsul a două numere naturale prin adunări repetate.
+            int a, b, p = 0;
+            Console.Write("a=");
+            a = int.Parse(Console.ReadLine());
+            Console.Write("b=");
+            b = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= a; i++)
+                p = p + b;
+            Console.WriteLine($"{a} * {b} = {p}");
+        }
+
+        private static void P21()
+        {
+            //Se citesc 3 numere naturale n, p şi k, apoi un şir de n numere naturale.Câte dintre acestea, împărţite la p dau restul k?
+            int n, p, k, cate = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("p=");
+            p = int.Parse(Console.ReadLine());
+            Console.Write("k=");
+            k = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numere sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            for (int i = 0; i < n; i++)
+            {
+                numar = int.Parse(t[i]);
+                if (numar % p == k)
+                    cate++;
+            }
+            Console.WriteLine($"Din cele {n} numere sunt {cate} care impartite la {p} dau restul {k}.");
         }
 
         private static void P20()
