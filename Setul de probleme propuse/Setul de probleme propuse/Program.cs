@@ -45,6 +45,187 @@ namespace Probleme_propuse___laborator
             //P33();
             //P34();
             //P35();
+            //P36();
+            //P37();
+            //P38();
+            //P39();
+            //P40();
+            //P41();
+            //P42();
+            //P43();
+            //P44();
+            //P45();
+        }
+
+        private static void P45()
+        {
+            //Să se scrie o funcție care inversează elementele memorate într-un tablou.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            for (int i = n-1; i >= 0; i--)
+            {
+                numar = int.Parse(t[i]);
+                Console.Write($"{numar} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P44()
+        {
+            //Să se scrie o functie pentru aflarea tablei inmulțirii unui număr utilizând bucla for și reprezentați-o în formatul corespunzător.
+            int n, i;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            for(i=1;i<=9;i++)
+            {
+                Console.WriteLine($"{n} x {i} = {n * i}");
+            }
+        }
+
+        private static void P43()
+        {
+            //Să se scrie o funcție care calculează pătratul elementelor memorate într-un tablou.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            Console.Write($"Pătratele elementelor tabloului initial sunt: ");
+
+            for (int i = 0; i < n; i++)
+            {
+                numar = int.Parse(t[i]);
+                Console.Write($"{numar * numar} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P42()
+        {
+            //Scrieti o functie care să se verifice dacă un număr natural este sau nu cub perfect.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i <= n; i++)
+            {
+                if (i * i * i == n)
+                {
+                    Console.WriteLine($"Numarul {n} este cub perfect.");
+                    return;
+                }
+            }
+            Console.WriteLine($"Numarul {n} nu este cub perfect.");
+        }
+
+        private static void P41()
+        {
+            //Un muncitor lucrează n zile pentru a termina o lucrare. Scrieti o functie prin care sa se determine câte zile sunt necesare
+            //pentru a termina aceeaşi lucrare o echipă de m muncitori.
+            double n, m;
+            Console.Write("n=");
+            n = double.Parse(Console.ReadLine());
+            Console.Write("m=");
+            m = double.Parse(Console.ReadLine());
+            Console.WriteLine($"O echipa de {m} muncitori au nevoie de {n / m} zile pentru a termina lucrarea.");
+        }
+
+        private static void P40()
+        {
+            //Viteza unui automobil este de v km / h.Scrieti o functie prin care sa exprimaţi această viteză în m/ s.
+            double v, m;
+            Console.Write("v=");
+            v = double.Parse(Console.ReadLine());
+            m = (double)(10 * v / 36);
+            Console.WriteLine($"{v} km/h = {m} m/s.");
+        }
+
+        private static void P39()
+        {
+            //Scrieţi o funcţie care să determine diferenţa dintre două momente de timp, date prin ore, minute şi secunde.
+        }
+
+        private static void P38()
+        {
+            //Scrieţi o functie care să calculeze factorialul unui număr întreg n.
+            int n, nfactorial = 1;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 2; i <= n; i++)
+            {
+                nfactorial = nfactorial * i;
+            }
+            Console.WriteLine($"Factorialul lui {n} este {nfactorial}.");
+        }
+
+        private static void P37()
+        {
+            //Să se calculeze şi să se tipărească primii n termeni din şirul Fibonacci, şir definit de relaţia de recurenta:
+            //f(n) = f(n - 2) + f(n - 1); f(1) = 1, f(2) = 1.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            int f1 = 1, f2 = 1, f3;
+            if (n == 1)
+            {
+                Console.WriteLine($"{f1}");
+                return;
+            }
+            else
+            {
+                if (n == 2)
+                {
+                    Console.WriteLine($"{f1} {f2}");
+                    return;
+                }
+                else
+                {
+                    Console.Write($"{f1} {f2} ");
+                    for (int i = 3; i <= n; i++)
+                    {
+                        f3 = f1 + f2;
+                        Console.Write($"{f3} ");
+                        f1 = f2;
+                        f2 = f3;
+                    }
+                }
+            }
+        }
+
+        private static void P36()
+        {
+            // Scrie o metodă care primește ca parametru un număr natural x și apoi afișează:
+            //-cifrele numărului(în ordine inversă)
+            //-suma cifrelor
+            int x, cx, s = 0;
+            Console.Write("x=");
+            x = int.Parse(Console.ReadLine());
+            cx = x;
+            Console.Write("Cifrele numarului sunt: ");
+            while (cx != 0)
+            {
+                Console.Write($"{cx % 10} ");
+                s = s + cx % 10;
+                cx = cx / 10;
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Suma cifrelor este: {s}.");
         }
 
         private static void P35()
