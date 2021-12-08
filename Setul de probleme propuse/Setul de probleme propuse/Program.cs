@@ -43,6 +43,63 @@ namespace Probleme_propuse___laborator
             //P31();
             //P32();
             //P33();
+            //P34();
+            //P35();
+        }
+
+        private static void P35()
+        {
+            //Scrieti o functie cu numele putere care primeste prin parametrul n un numar natural cu cel mult 9 cifre si care furnizeaza
+            //prin parametrii x si k doua numere naturale cu proprietatea ca n = xk si x este minim.
+            int n, x, k;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            for (x = 0; x <= n; x++)
+            {
+                for (k = 0; k <= n; k++)
+                    if (x * k == n)
+                    {
+                        Console.WriteLine($"{n} = {x} * {k}");
+                        return;
+                    }
+            }
+        }
+
+        private static void P34()
+        {
+            //Scrieţi o funcţie care să transforme un unghi exprimat în radiani în valoarea sa exprimată în grade
+            //şi una care să facă transformarea inversă.
+            int optiune;
+            Console.WriteLine("1 = Radiani -> Grade, 2 = Grade -> Radiani");
+            optiune = int.Parse(Console.ReadLine());
+
+            if (optiune != 1 && optiune != 2)
+            {
+                Console.WriteLine("eroare!");
+                return;
+            }
+
+            switch (optiune)
+            {
+                case 1:
+                    double x, g;
+                    Console.WriteLine("Dati valoarea in radiani a unghiului.");
+                    Console.Write("x=");
+                    x = double.Parse(Console.ReadLine());
+                    g = (180 * x) / 3.1415;
+                    Console.WriteLine($"{x} radiani sunt {g} grade.");
+                    break;
+                case 2:
+                    double y, r;
+                    Console.WriteLine("Dati valoarea in grade a unghiului.");
+                    Console.Write("x=");
+                    y = double.Parse(Console.ReadLine());
+                    r = y * 3.1415 / 180;
+                    Console.WriteLine($"{y} grade sunt {r} radiani.");
+                    break;
+                default:
+                    break;
+            }
         }
 
         private static void P33()
@@ -163,11 +220,11 @@ namespace Probleme_propuse___laborator
             int n, ci, sumcif;
             Console.Write("n=");
             n = int.Parse(Console.ReadLine());
-            for(int i=1; i <= n ; i++)
+            for (int i = 1; i <= n; i++)
             {
                 ci = i;
                 sumcif = 0;
-                while(ci!=0)
+                while (ci != 0)
                 {
                     sumcif = sumcif + ci % 10;
                     ci = ci / 10;
@@ -184,7 +241,7 @@ namespace Probleme_propuse___laborator
             int og, ci;
             bool ok, ok2;
 
-            for (int i = 100; i <= 999 ; i++)
+            for (int i = 100; i <= 999; i++)
             {
                 ok = true;
                 if (i % 2 == 0 && i != 2)
@@ -196,7 +253,7 @@ namespace Probleme_propuse___laborator
                 {
                     ci = i;
                     og = 0;
-                    while(ci!=0)
+                    while (ci != 0)
                     {
                         og = og * 10 + ci % 10;
                         ci = ci / 10;
@@ -209,7 +266,7 @@ namespace Probleme_propuse___laborator
                             ok2 = false;
                     if (ok2)
                         Console.Write($"{i} ");
-                }         
+                }
             }
             Console.WriteLine();
         }
@@ -265,7 +322,7 @@ namespace Probleme_propuse___laborator
             bool ok;
             Console.Write("m=");
             m = int.Parse(Console.ReadLine());
-            if(m<2)
+            if (m < 2)
             {
                 Console.WriteLine($"Nu exista numere prime mai mici sau egale cu {m}.");
                 return;
