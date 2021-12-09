@@ -55,6 +55,56 @@ namespace Probleme_propuse___laborator
             //P43();
             //P44();
             //P45();
+            //P46();
+            //P47();
+        }
+
+        private static void P47()
+        {
+            //Să se scrie un program care memorează 100 de numere aleatoare cuprinse între 0 și 99 întrun tablou și care
+            //afișează numerele care se repetă în tablou.
+            Random rnd = new Random();
+            int MAX = 100;
+            int n = 100;
+            int[] v = new int[n];
+            int[] vf = new int[100];
+            Console.WriteLine($"Cele 100 de numere aleatoare sunt: ");
+            for (int i = 0; i < v.Length; i++)
+            {
+                v[i] = rnd.Next(MAX);
+                vf[v[i]]++;
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Numerele care se repeta sunt: ");
+            for (int i = 0; i < 100; i++)
+            {
+                if (vf[i] > 1)
+                {
+                    Console.Write($"{i} ");
+                    vf[i] = 0;
+                }
+            }
+        }
+
+        private static void P46()
+        {
+            //Un palindrom este un număr sau o frază care se citește la fel de la început cât și de la sfârșit. De exemplu, fiecare dintre
+            //următoarele numere întregi formate din cinci cifre este un palindrom: 12321, 55555, 45554 și 11611. Să se scrie o functie care
+            //primeste un număr și verifică dacă este palindrom sau nu. (Utilizați operatorii de împărțit și rest pentru a separa numărul în cifre individuale).
+            int n, cn, og = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            cn = n;
+            while (cn != 0)
+            {
+                og = og * 10 + cn % 10;
+                cn = cn / 10;
+            }
+            if (og == n)
+                Console.WriteLine($"Numarul {n} este palindrom.");
+            else
+                Console.WriteLine($"Numarul {n} nu este palindrom.");
         }
 
         private static void P45()
