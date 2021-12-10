@@ -57,6 +57,213 @@ namespace Probleme_propuse___laborator
             //P45();
             //P46();
             //P47();
+            //P48();
+            //P49();
+            //P50();
+            //P51();
+            //P52();
+            //P53();
+            //P54();
+            //P55();
+        }
+
+        private static void P55()
+        {
+            //Fie X un vector cu n componente numere întregi.Să se calculeze expresia: e = x1 - x2 + x3 - x4 +….±xn.
+            int n, pozpare = 0, pozimpare = 0;
+            int[] v = new int[100];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (i % 2 == 0)
+                    pozpare = pozpare + v[i];
+                else
+                    pozimpare = pozimpare + v[i];
+            }
+            Console.WriteLine($"Expresia are valoarea {pozpare - pozimpare}");
+        }
+
+        private static void P54()
+        {
+            //Functia care determina raportul dintre elem pare si elem impare dintr - un vector.
+            int n, impare = 0, pare = 0;
+            int[] v = new int[100];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (v[i] % 2 != 0)
+                    impare++;
+                else
+                    pare++;
+            }
+            Console.WriteLine($"Raportul dintre elementele pare si cele impare este de {pare} : {impare}");
+        }
+
+        private static void P53()
+        {
+            //Functia care determina daca un vector dat are numai elem pare.
+            int n;
+            bool ok = true;
+            int[] v = new int[100];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (v[i] % 2 != 0)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok)
+                Console.WriteLine("Vectorul dat contine numai elemente pare.");
+            else
+                Console.WriteLine("Vectorul dat contine si elemente impare.");
+        }
+
+        private static void P52()
+        {
+            //Functia care determina daca un vector dat are numai elem impare.
+            int n;
+            bool ok = true;
+            int[] v = new int[100];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (v[i] % 2 == 0)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok)
+                Console.WriteLine("Vectorul dat contine numai elemente impare.");
+            else
+                Console.WriteLine("Vectorul dat contine si elemente pare.");
+        }
+
+        private static void P51()
+        {
+            //Functia care determina minimul unui vector dat.
+            int n, minv = int.MaxValue;
+            int[] v = new int[100];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (v[i] < minv)
+                {
+                    minv = v[i];
+                }
+            }
+            Console.WriteLine($"Minimul vectorului dat este: {minv}");
+        }
+
+        private static void P50()
+        {
+            //Functia care determina daca un vector dat e ordonat crescator.
+            int n;
+            int[] v = new int[100];
+            bool ok = true;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            v[0] = int.Parse(t[0]);
+
+            for (int i = 1; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+                if (v[i - 1] > v[i])
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            if (ok)
+                Console.WriteLine("Vectorul dat este ordonat crescator.");
+            else
+                Console.WriteLine("Vectorul dat nu este ordonat crescator.");
+        }
+
+        private static void P49()
+        {
+            //Sa se scrie o functie care calculeaza media aritmetica a elementelor pare dintr - un vector de numere intregi.
+            int n, k = 0, s = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            for (int i = 0; i < n; i++)
+            {
+                numar = int.Parse(t[i]);
+                if (numar % 2 == 0)
+                {
+                    k++;
+                    s = s + numar;
+                }
+            }
+            Console.WriteLine($"Media aritmetica a elementelor pare din vector este: {s / k}");
+        }
+
+        private static void P48()
+        {
+            //Să se scrie un program care adună două matrici de dimensiune nxn.
         }
 
         private static void P47()
@@ -122,7 +329,7 @@ namespace Probleme_propuse___laborator
 
             int numar;
 
-            for (int i = n-1; i >= 0; i--)
+            for (int i = n - 1; i >= 0; i--)
             {
                 numar = int.Parse(t[i]);
                 Console.Write($"{numar} ");
@@ -136,7 +343,7 @@ namespace Probleme_propuse___laborator
             int n, i;
             Console.Write("n=");
             n = int.Parse(Console.ReadLine());
-            for(i=1;i<=9;i++)
+            for (i = 1; i <= 9; i++)
             {
                 Console.WriteLine($"{n} x {i} = {n * i}");
             }
