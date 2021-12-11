@@ -65,6 +65,157 @@ namespace Probleme_propuse___laborator
             //P53();
             //P54();
             //P55();
+            //P56();
+            //P57();
+            //P58();
+            //P59();
+        }
+
+        private static void P59()
+        {
+            //Se citesc de la tastatură poz <= n <= 1000, două numere naturale și n numere întregi.Eliminați din vector elementul aflat pe
+            //poziția poz. (pentru eliminarea elementului din poziţia poz, se observă că primele poz - 1 elemente rămân neschimbate, în timp
+            //ce elementele din poziţiile poz + 1, poz + 2,…….,n se deplasează cu o poziţie spre stânga pentru a “umple” golul rămas prin
+            //eliminarea elementului din poziţia poz. Evident, dimensiunea vectorului scade cu o unitate).
+            int n, poz;
+            Console.Write("poz=");
+            poz = int.Parse(Console.ReadLine());
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar, numarurmator;
+            numar = int.Parse(t[0]);
+
+            for (int i = 0; i < n; i++)
+            {
+                numar = int.Parse(t[i]);
+            }
+
+            for (int i = poz; i < n - 1; i++)
+            {
+                t[i] = t[i + 1];
+            }
+
+            n--;
+            Console.Write($"Vectorul dupa eliminarea elementului de pozitia {poz}: ");
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{t[i]} ");
+            }
+            Console.WriteLine($", pozitiile fiind numerotate de la valoarea 0.");
+        }
+
+        private static void P58()
+        {
+            //Se citesc de la tastatură k, un număr întreg, n <= 1000, un număr natural și n numere întregi. Determinați poziția ultimului
+            //element din vector cu proprietatea că este egal cu k. (Pentru a determina ultimul element cu o anumită proprietate, se parcurge
+            //vectorul de la dreapta spre stânga (în ordinea descrescătoare a indicilor până când găsim primul element cu proprietatea cerută
+            //sau până când epuizăm elementele vectorului).
+            int k, n, poz = -1;
+            Console.Write("k=");
+            k = int.Parse(Console.ReadLine());
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int numar;
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                numar = int.Parse(t[i]);
+                if (numar == k)
+                {
+                    poz = i;
+                    break;
+                }
+            }
+            if (poz != -1)
+                Console.WriteLine($"Ultimul element din vector care indeplineste proprietatea ceruta este pe pozitia {poz}.");
+            else
+                Console.WriteLine("Nu exista niciun element in vectorul dat care sa indeplineasca proprietatea ceruta.");
+        }
+
+        private static void P57()
+        {
+            //Se citesc de la tastatură n <= 100, un număr natural și n numere întregi.Determinați poziția primului element din vector cu
+            //proprietatea că este medie aritmetică între succesorul și predecesorul său. (Pentru a determina primul element (de indice minim)
+            //cu o anumită proprietate, se parcurge vectorul de la stânga la dreapta până când găsim primul element cu proprietatea cerută sau
+            //până când epuizăm elementele vectorului).
+            int n, poz = -1;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            double numaranterior, numar, numarurmator;
+            numaranterior = double.Parse(t[0]);
+            numar = double.Parse(t[1]);
+
+            for (int i = 2; i < n; i++)
+            {
+                numarurmator = double.Parse(t[i]);
+                if (numar == (numaranterior + numarurmator) / 2)
+                {
+                    poz = i;
+                    break;
+                }
+                numaranterior = numar;
+                numar = numarurmator;
+            }
+            if (poz != -1)
+                Console.WriteLine($"Pozitia primului element din vector cu proprietatea că este egal cu medie aritmetică între succesorul si predecesorul sau este {poz}.");
+            else
+                Console.WriteLine("Nu exista niciun element in vectorul dat care sa indeplineasca proprietatea ceruta.");
+        }
+
+        private static void P56()
+        {
+            //Să se construiască un vector v cu primii termeni ai şirului lui Fibonacci.Şirul are primii doi termeni egali cu 1 şi fiecare
+            //din termenii următori este egal cu suma dintre termenul precedent şi termenul anteprecedent.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            int f1 = 1, f2 = 1, f3;
+            if (n == 1)
+            {
+                Console.WriteLine($"{f1}");
+                return;
+            }
+            else
+            {
+                if (n == 2)
+                {
+                    Console.WriteLine($"{f1} {f2}");
+                    return;
+                }
+                else
+                {
+                    Console.Write($"{f1} {f2} ");
+                    for (int i = 3; i <= n; i++)
+                    {
+                        f3 = f1 + f2;
+                        Console.Write($"{f3} ");
+                        f1 = f2;
+                        f2 = f3;
+                    }
+                }
+            }
         }
 
         private static void P55()
