@@ -69,6 +69,133 @@ namespace Probleme_propuse___laborator
             //P57();
             //P58();
             //P59();
+            //P60();
+            //P61();
+            //P62();
+        }
+
+        private static void P62()
+        {
+            //Se citesc de la tastatură n, un număr natural mai mic decât 100 și cele n elemente reale ale unui vector.
+            //Se cere să se insereze între oricare două elemente ale vectorului media lor aritmetică.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            double[] v = new double[1000];
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = double.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                n++;
+                for (int j = n - 1; j > i; j--)
+                {
+                    v[j + 1] = v[j];
+                }
+                v[i + 1] = (v[i] + v[i + 2]) / 2;
+                i++;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P61()
+        {
+            //Se citesc de la tastatură un număr întreg x, k <= n <= 1000, două numere naturale și n numere întregi.Inserați elementul x în
+            //vector pe poziția k. (elementele din poziţiile k, k + 1,.......n trebuie să se deplaseze cu o poziţie spre dreapta pentru
+            //a face loc noii valori x introduse în poziţia k; dimensiunea vectorului creşte cu o unitate).
+            int x, k, n;
+            Console.Write("x=");
+            x = int.Parse(Console.ReadLine());
+            Console.Write("k=");
+            k = int.Parse(Console.ReadLine());
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            n++;
+
+            for (int i = n - 1; i >= k; i--)
+            {
+                v[i + 1] = v[i];
+            }
+
+            v[k] = x;
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P60()
+        {
+            //Se citesc de la tastatură k, un număr întreg, n<= 1000, un număr natural și n numere întregi. Eliminați din vector toate
+            //elementele egale cu k.
+            int k, n;
+            Console.Write("k=");
+            k = int.Parse(Console.ReadLine());
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (v[i] == k)
+                {
+                    for (int j = i; j < n; j++)
+                    {
+                        v[j] = v[j + 1];
+                    }
+                    n--;
+                    i--;
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void P59()
