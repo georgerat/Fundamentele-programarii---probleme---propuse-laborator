@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Probleme_propuse___laborator
 {
@@ -72,6 +68,369 @@ namespace Probleme_propuse___laborator
             //P60();
             //P61();
             //P62();
+            //P63();
+            //P64();
+            //P65();
+            //P66();
+            //P67();
+            //P68();
+            //P69();
+        }
+
+        private static void P69()
+        {
+            //Se dau înălțimile a n copii, numerotați de la 1 la n, exprimate prin numere naturale.Afișați numerele de ordine ale copiilor
+            //în ordinea crescătoare a înălțimii lor.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            int minv;
+            int poz;
+
+            for (int j = 0; j < n; j++)
+            {
+                minv = int.MaxValue;
+                poz = -1;
+                for (int i = 0; i < n; i++)
+                {
+                    if (v[i]<minv)
+                    {
+                        minv = v[i];
+                        poz = i;
+                    }
+                }
+                if (poz != -1)
+                {
+                    Console.Write($"{poz+1} ");
+                    v[poz] = int.MaxValue;
+                }
+            }
+            Console.WriteLine();
+        }
+
+        private static void P68()
+        {
+            //Se citește un șir cu n numere naturale. Să se verifice dacă prin rearajarea elementelor șirului se poate obține un șir palindrom.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+            int k;
+            int numarimpardeori = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                k = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (v[i] == v[j])
+                        k++;
+                }
+                if (k % 2 == 1)
+                    numarimpardeori++;
+            }
+
+            if (numarimpardeori > 1)
+                Console.WriteLine($"Nu se poate obtine un sir palindrom.");
+            else
+                Console.WriteLine($"Se poate obtine un sir palindrom.");
+        }
+
+        private static void P67()
+        {
+            //Să se scrie un program care ordonează crescător elementele din prima jumătate a unui vector și descrescător elementele din
+            //a doua jumătate.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n / 2; i++)
+                for (int j = i; j <= n / 2; j++)
+                    if (v[i] > v[j])
+                    {
+                        int aux = v[i];
+                        v[i] = v[j];
+                        v[j] = aux;
+                    }
+
+            for (int i = n / 2; i < n - 1; i++)
+                for (int j = i; j < n; j++)
+                    if (v[i] < v[j])
+                    {
+                        int aux = v[i];
+                        v[i] = v[j];
+                        v[j] = aux;
+                    }
+
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P66()
+        {
+            //CRB are un șir cu n numere naturale diferite.Nu știe ce să facă cu ele și le aranjează în ordine descrescătoare.Apoi observă că
+            //anumite numere se află pe aceeași poziție ca în șirul inițial. Ajutați pe CRB să determine câte elemente din șir respectă această
+            //regulă.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+            int[] u = new int[1000];
+            int k = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                u[i] = v[i];
+            }
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = i; j < n; j++)
+                    if (u[i] < u[j])
+                    {
+                        int aux = u[i];
+                        u[i] = u[j];
+                        u[j] = aux;
+                    }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (u[i] == v[i])
+                    k++;
+            }
+            Console.WriteLine($"Sunt {k} numere care indeplinesc proprietatea ceruta.");
+        }
+
+        private static void P65()
+        {
+            //Se dă un şir cu n elemente, numere naturale. Să se afişeze, în ordine crescătoare, toate valorile distincte care se pot obţine
+            //ca sumă de două elemente distincte din şir.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+            int[] u = new int[1000];
+            int k = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n && j != i; j++)
+                {
+                    for (int m = 0; m < n && m != j && m != i; m++)
+                    {
+                        if (v[i] == v[j] + v[m])
+                        {
+                            u[k] = v[i];
+                            k++;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = n - 1; j >= 0 && j != i; j--)
+                {
+                    for (int m = 0; m < n && m != j && m != i; m++)
+                    {
+                        if (v[i] == v[m] + v[j])
+                        {
+                            u[k] = v[i];
+                            k++;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < k - 1; i++)
+            {
+                for (int j = i; j < k; j++)
+                    if (u[i] > u[j])
+                    {
+                        int aux = u[i];
+                        u[i] = u[j];
+                        u[j] = aux;
+                    }
+            }
+
+            for (int i = 0; i < k; i++)
+            {
+                Console.Write($"{u[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P64()
+        {
+            //Se dau n, un număr natural și n numere întregi.Folosind un alt vector, să se aşeze numerele pare la început.
+            //Exemplu: Date de intrare: n = 4 și numerele: 3, 4, 6, 5 Date de ieşire: 4 6 3 5.
+            int n;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+            int[] u = new int[1000];
+            int k = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (v[i] % 2 == 0)
+                {
+                    u[k] = v[i];
+                    k++;
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (v[i] % 2 == 1)
+                {
+                    u[k] = v[i];
+                    k++;
+                }
+            }
+
+            Console.Write("u[]= ");
+            for (int i = 0; i < k; i++)
+            {
+                Console.Write($"{u[i]} ");
+            }
+            Console.WriteLine();
+        }
+
+        private static void P63()
+        {
+            //Să se extragă dintr-un vector elementele care au ultima cifră egală cu k şi să se formeze cu ele un alt vector. Să se afişeze
+            //cei doi vectori, unul sub altul. Exemplu: dacă se dau n = 3, k = 7, v[] = { 17, 23, 47 }, atunci vectorul u va fi { 17, 47}.
+            int n, k;
+            Console.Write("k=");
+            k = int.Parse(Console.ReadLine());
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+
+            Console.Write($"Cele {n} numre sunt: ");
+
+            string line = Console.ReadLine();
+            char[] sep = { ' ', '\n', '\t', '\r' };
+            string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
+
+            int[] v = new int[1000];
+            int[] u = new int[1000];
+            int l = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                v[i] = int.Parse(t[i]);
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if (v[i] % 10 == k)
+                {
+                    u[l] = v[i];
+                    l++;
+                    for (int j = i; j < n; j++)
+                    {
+                        v[j] = v[j + 1];
+                    }
+                    n--;
+                    i--;
+                }
+            }
+
+            Console.Write("v[]= ");
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"{v[i]} ");
+            }
+            Console.WriteLine();
+
+            Console.Write("u[]= ");
+            for (int i = 0; i < l; i++)
+            {
+                Console.Write($"{u[i]} ");
+            }
+            Console.WriteLine();
         }
 
         private static void P62()
@@ -216,7 +575,7 @@ namespace Probleme_propuse___laborator
             char[] sep = { ' ', '\n', '\t', '\r' };
             string[] t = line.Split(sep, StringSplitOptions.RemoveEmptyEntries);
 
-            int numar, numarurmator;
+            int numar;
             numar = int.Parse(t[0]);
 
             for (int i = 0; i < n; i++)
@@ -542,6 +901,39 @@ namespace Probleme_propuse___laborator
         private static void P48()
         {
             //Să se scrie un program care adună două matrici de dimensiune nxn.
+            int n, i, j;
+            int[,] a = new int[100, 100];
+            int[,] b = new int[100, 100];
+            int[,] c = new int[100, 100];
+            Console.Write("Dati dimensiunea matricei: ");
+            n = int.Parse(Console.ReadLine());
+            Console.WriteLine("Introduceti elementele primei matrice:");
+            for (i = 1; i <= n; i++)
+            {
+                for (j = 1; j <= n; j++)
+                {
+                    a[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            Console.WriteLine("Introduceti elementele celei de a doua matrice:");
+            for (i = 1; i <= n; i++)
+            {
+                for (j = 1; j <= n; j++)
+                {
+                    b[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            Console.Write("Suma celor doua matrice este:");
+            for (i = 1; i <= n; i++)
+            {
+                Console.WriteLine();
+                for (j = 1; j <= n; j++)
+                {
+                    c[i, j] = a[i, j] + b[i, j];
+                    Console.Write($"{c[i, j]} ");
+                }
+            }
+            Console.WriteLine();
         }
 
         private static void P47()
@@ -694,6 +1086,34 @@ namespace Probleme_propuse___laborator
         private static void P39()
         {
             //Scrieţi o funcţie care să determine diferenţa dintre două momente de timp, date prin ore, minute şi secunde.
+            int o1, o2, m1, m2, s1, s2, ore, minute, secunde;
+            Console.WriteLine("Dati primul moment:");
+            Console.Write("Ora:");
+            o1 = int.Parse(Console.ReadLine());
+            Console.Write("Minute:");
+            m1 = int.Parse(Console.ReadLine());
+            Console.Write("Secunde:");
+            s1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Dati al doilea moment:");
+            Console.Write("Ora:");
+            o2 = int.Parse(Console.ReadLine());
+            Console.Write("Minute:");
+            m2 = int.Parse(Console.ReadLine());
+            Console.Write("Secunde:");
+            s2 = int.Parse(Console.ReadLine());
+            DateTime h1 = new DateTime(2021, 10, 28, o1, m1, s1);
+            DateTime h2 = new DateTime(2021, 01, 30, o2, m2, s2);
+            TimeSpan o;
+            if (h1 > h2)
+                o = h1 - h2;
+            else
+                o = h2 - h1;
+            ore = o.Hours;
+            minute = o.Minutes;
+            secunde = o.Seconds;
+            string timeDiff = ore.ToString("00") + " ore" + minute.ToString(" 00") + " minute" + secunde.ToString(" 00") + " secunde";
+            Console.Write($"Diferenta dintre momente este de {timeDiff}");
+            Console.WriteLine();
         }
 
         private static void P38()
@@ -928,6 +1348,37 @@ namespace Probleme_propuse___laborator
         private static void P30()
         {
             //Să se transforme un număr din baza 10 în baza p < 10.Să se transforme un număr din baza p < 10 în baza 10.
+            int n, p, i = 0;
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("p=");
+            p = int.Parse(Console.ReadLine());
+            int[] v = new int[20];
+            while (n != 0)
+            {
+                v[i] = n % p;
+                n /= p;
+                i++;
+            }
+            for (int j = i - 1; j >= 0; j--)
+                Console.Write(v[j]);
+            Console.WriteLine();
+
+            int rez = 0, k = 0;
+            int[] a = new int[20];
+            Console.Write("n=");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("p=");
+            p = int.Parse(Console.ReadLine());
+            while (n != 0)
+            {
+                a[k] = n % 10;
+                k++;
+                n /= 10;
+            }
+            for (int j = k; j >= 0; j--)
+                rez = rez * p + a[j];
+            Console.WriteLine(rez);
         }
 
         private static void P29()
@@ -1509,6 +1960,34 @@ namespace Probleme_propuse___laborator
         {
             //Două numere întregi x şi y sunt "prietene" dacă suma divizorilor numărului x este egală cu
             //suma divizorilor numărului y. Să se găsească numerele "prietene" din intervalul[a, b].
+            int a, b, k = 0;
+            Console.Write("a=");
+            a = int.Parse(Console.ReadLine());
+            Console.Write("b=");
+            b = int.Parse(Console.ReadLine());
+
+            for (int i = a; i <= b; i++)
+            {
+                for (int j = a; j <= b; j++)
+                {
+                    if (SumDiv(i) == SumDiv(j) && i != j)
+                    {
+                        Console.Write($"({i},{j}),");
+                        k++;
+                    }
+                }
+            }
+            if (k == 0)
+                Console.WriteLine($"In intervalul [{a},{b}] nu exista numere prietene");
+        }
+
+        private static int SumDiv(int x)
+        {
+            int suma = 0;
+            for (int i = 1; i <= x; i++)
+                if (x % i == 0)
+                    suma = suma + i;
+            return suma;
         }
 
         private static void P5()
