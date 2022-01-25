@@ -107,7 +107,7 @@ namespace Probleme_propuse___laborator
                 poz = -1;
                 for (int i = 0; i < n; i++)
                 {
-                    if (v[i]<minv)
+                    if (v[i] < minv)
                     {
                         minv = v[i];
                         poz = i;
@@ -115,7 +115,7 @@ namespace Probleme_propuse___laborator
                 }
                 if (poz != -1)
                 {
-                    Console.Write($"{poz+1} ");
+                    Console.Write($"{poz + 1} ");
                     v[poz] = int.MaxValue;
                 }
             }
@@ -1544,7 +1544,7 @@ namespace Probleme_propuse___laborator
         private static void P23()
         {
             //Efectuaţi împărţirea întreagă a două numere, făra a utiliza operatorii / şi %, ci doar scăderi repetate.
-            int a, b, c = 0, r = 0, ca;
+            int a, b, c = 0, ca;
             Console.Write("a=");
             a = int.Parse(Console.ReadLine());
             Console.Write("b=");
